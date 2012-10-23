@@ -6,6 +6,14 @@ Given 'step definitions:' do |body|
   @cucumber_factory.create_step_definitions 'all.rb', body
 end
 
+Given 'the gem is loaded' do
+  gempath = File.expand_path '../../../lib', __FILE__
+  @cucumber_factory.create_support 'env.rb', <<-RUBY
+    $LOAD_PATH << #{gempath.inspect}
+    require "cucumber-the"
+  RUBY
+end
+
 When 'I run the features' do
   @cucumber_factory.run
 end

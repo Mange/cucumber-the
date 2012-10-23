@@ -20,6 +20,7 @@ class CucumberFactory
     @root = Pathname(root)
     @status = nil
     @output = "(Have not been run yet)"
+    ensure_structure
   end
 
   def create_feature(name, body)
@@ -30,11 +31,11 @@ class CucumberFactory
   end
 
   def create_step_definitions(name, body)
-    @root
-      .join('step_definitions')
-      .tap { |dir| dir.mkpath }
-      .join(name)
-      .open('w') { |file| file << body }
+    create_file @root.join('step_definitions', name), body
+  end
+
+  def create_support(name, body)
+    create_file @root.join('support', name), body
   end
 
   def run
@@ -49,6 +50,15 @@ class CucumberFactory
   private
   def clean_name(name)
     name.gsub(/\.feature$/, '').gsub('_', ' ')
+  end
+
+  def ensure_structure
+    @root.join('support').mkpath
+    @root.join('step_definitions').mkpath
+  end
+
+  def create_file(path, body)
+    path.open('w') { |file| file << body }
   end
 end
 
