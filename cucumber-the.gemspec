@@ -14,4 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = "cucumber-the"
   gem.require_paths = ["lib"]
   gem.version       = Cucumber::The::VERSION
+
+  gem.add_dependency 'cucumber', '~> 1.2'
+
+  gem.add_development_dependency 'rspec'
 end
