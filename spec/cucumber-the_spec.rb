@@ -1,6 +1,5 @@
 # encoding: UTF-8
 require 'spec_helper'
-require 'cucumber-the'
 
 describe Cucumber::The do
   it "adds a The constant with a Registry" do

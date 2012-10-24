@@ -21,3 +21,38 @@ Feature: Simple usage
     And the gem is loaded
     When I run the features
     Then all scenarios should pass
+
+  Scenario: Failing on missing values
+    Given a feature "dog.feature" with the following scenario:
+      """
+      Scenario: Humping
+        When I hump the leg
+        Then I should be happy
+      """
+    And step definitions:
+      """
+      class Dog
+        def happy?
+          @humped
+        end
+
+        def hump(item)
+          @humped = true
+        end
+      end
+
+      When 'I hump the leg' do
+        @dog = Dog.new
+        @dog.hump The[:leg]
+      end
+
+      Then 'I should be happy' do
+        @dog.happy?
+      end
+      """
+    And the gem is loaded
+    When I run the features
+    Then a scenario should fail with:
+      """
+      Don't know what "the leg" is. Did you forget to assign it and/or run a prerequisite step before this step?
+      """

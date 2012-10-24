@@ -29,3 +29,8 @@ Then 'a scenario should fail' do
     fail "Scenarios passed, but shouldn't have. Output:\n#{@cucumber_factory.output}"
   end
 end
+
+Then 'a scenario should fail with:' do |text|
+  fail "Scenarios passed" if @cucumber_factory.status.success?
+  @cucumber_factory.output.should include text
+end
