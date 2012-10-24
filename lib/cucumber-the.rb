@@ -1,7 +1,9 @@
 require "cucumber-the/version"
+require "cucumber-the/registry"
 
 module Cucumber
   module The
-    # Your code goes here...
   end
 end
+
+The = Cucumber::The::Registry.new
