@@ -1,4 +1,4 @@
-Given 'a feature "$name" with the following scenario:' do |name, scenario_body|
+Given /^a feature "([^"]+)" with the following scenarios?:$/ do |name, scenario_body|
   @cucumber_factory.create_feature name, scenario_body
 end
 

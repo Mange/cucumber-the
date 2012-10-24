@@ -9,6 +9,10 @@ module Cucumber
         thread_registry[name] || raise_error(name)
       end
 
+      def clear
+        thread_registry.clear
+      end
+
       private
       def thread_registry
         Thread.current[:the_registry] ||= {}

@@ -7,3 +7,7 @@ module Cucumber
 end
 
 The = Cucumber::The::Registry.new
+
+Before do
+  The.clear
+end

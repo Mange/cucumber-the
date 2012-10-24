@@ -5,4 +5,12 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
+def before_blocks
+  Thread.current[:before_blocks] ||= []
+end
+
+def Before(&block)
+  before_blocks << block
+end
+
 require 'cucumber-the'

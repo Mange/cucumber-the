@@ -16,6 +16,12 @@ module Cucumber
           registry[:elephant]
         }.to raise_error /the elephant/
       end
+
+      it "can be cleared" do
+        registry[:foo] = "bar"
+        registry.clear
+        expect { registry[:foo] }.to raise_error
+      end
     end
   end
 end
