@@ -1,7 +1,6 @@
 Feature: Simple usage
   In the most simple case, just use `The` as a getter and setter inside the tests.
 
-  @wip
   Scenario: Referring to previously set value
     Given a feature "calculator.feature" with the following scenario:
       """
@@ -16,7 +15,7 @@ Feature: Simple usage
       end
 
       Then 'the sum should be 4' do
-        assert The[:sum] == 4
+        fail if The[:sum] != 4
       end
       """
     And the gem is loaded
