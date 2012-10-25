@@ -13,6 +13,19 @@ module Cucumber
         thread_registry.clear
       end
 
+      def method_missing(name, *args)
+        key_name = name.to_s
+        if key_name.chomp! '='
+          self[key_name.to_sym] = args.first
+        else
+          self[name]
+        end
+      end
+
+      def responds_to(name, *)
+        true
+      end
+
       private
       def thread_registry
         Thread.current[:the_registry] ||= {}

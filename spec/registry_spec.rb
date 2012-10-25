@@ -6,14 +6,25 @@ module Cucumber
     describe Registry do
       subject(:registry) { Registry.new }
 
-      it "can set and access values" do
+      it "can set and access values using hash notation" do
         registry[:foo] = "bar"
         registry[:foo].should == "bar"
       end
 
-      it "raises an error when accessing unset values" do
+      it "can set and access values using messages" do
+        registry.foo = "bar"
+        registry.foo.should == "bar"
+      end
+
+      it "raises an error when accessing unset values using hash notation" do
         expect {
           registry[:elephant]
+        }.to raise_error /the elephant/
+      end
+
+      it "raises an error when accessing unset values using hash notation" do
+        expect {
+          registry.elephant
         }.to raise_error /the elephant/
       end
 
