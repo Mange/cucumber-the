@@ -39,12 +39,10 @@ class CucumberFactory
   end
 
   def run
-    Timeout.timeout(2) do
-      IO.popen("#{$0} #{@root.to_s}") do |output|
-        @output = output.read
-      end
-      @status = $?
+    IO.popen("#{$0} #{@root.to_s}") do |output|
+      @output = output.read
     end
+    @status = $?
   end
 
   private
