@@ -9,11 +9,11 @@ Given 'a published post' do
 end
 
 Given 'I publish a post' do
-  The[:post] = FactoryGirl.create :post, :published, user: The(:logged_in_user)
+  The.post = FactoryGirl.create :post, :published, user: The(:logged_in_user)
 end
 
 When 'I go to the post' do
-  visit post_path The[:post]
+  visit post_path The.post
 end
 
 Then 'I should see the post title' do
@@ -49,7 +49,7 @@ Note how we can say "the post" and "the tag" instead of referring to the raw dat
 
 ```ruby
 Then 'I should see the tags' do
-  The[:tags].each do |tag|
+  The.tags.each do |tag|
     page.should have_css('.tag', text: tag.name)
   end
 end
@@ -73,7 +73,7 @@ And then execute:
 
     $ bundle
 
-Then, `require 'cucumber/the'` inside `features/support/env.rb` (or a similar one that you control).
+Then, `require 'cucumber-the'` inside `features/support/env.rb` (or a similar one that you control).
 
 ## Contributing
 
