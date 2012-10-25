@@ -1,4 +1,5 @@
 # Cucumber::The
+[![Build Status](https://secure.travis-ci.org/Mange/cucumber-the.png)](http://travis-ci.org/Mange/cucumber-the)
 
 Adds quick access to instances to help you write more fluid steps.
 
@@ -82,3 +83,14 @@ Then, `require 'cucumber/the'` inside `features/support/env.rb` (or a similar on
 4. Implement feature
 5. Push to the branch (`git push origin my-new-feature`)
 6. Create new Pull Request
+
+## Ruby versions
+
+This gem supports the following versions of Ruby:
+
+  * Ruby 1.8.7
+  * Ruby 1.9.3
+  * JRuby (1.8 mode)
+  * JRuby (1.9 mode)
+  * Rubinius (1.8 mode)
+  * Rubinius (1.9 mode)
