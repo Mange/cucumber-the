@@ -36,7 +36,8 @@ module Cucumber
       end
 
       def error_message(name)
-        %(Don't know what "the #{name}" is. Did you forget to assign it and/or run a prerequisite step before this step?)
+        formatted_name = name.to_s.gsub('_', ' ')
+        %(Don't know what "the #{formatted_name}" is. Did you forget to assign it and/or run a prerequisite step before this step?)
       end
     end
   end
