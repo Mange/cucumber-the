@@ -4,10 +4,24 @@ require 'timeout'
 
 class CucumberFactory
   def self.use
+    # Travis CI + JRuby have trouble with Dir.mktmpdir. After the resource
+    # block is done Dir tries to remove the tmp directory, but that fails in
+    # that configuration. We ignore these errors, but only after safeguarding
+    # that we're not ignoring errors that was actually caused by our own code.
+    error_in_test = false
+
     Dir.mktmpdir do |dir|
       @instance = new dir
-      yield
+      begin
+        yield
+      rescue Errno::EACCES
+        error_in_test = true
+        raise
+      end
     end
+  rescue Errno::EACCES => error
+    raise if error_in_test
+    warn "Could not remove temporary directory. Error: #{error}"
   ensure
     @instance = nil
   end
