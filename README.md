@@ -75,6 +75,10 @@ And then execute:
 
 Then, `require 'cucumber-the'` inside `features/support/env.rb` (or a similar one that you control).
 
+## Documentation
+
+You can [read the documentation](https://www.relishapp.com/mange/cucumber-the/) using [Relish](https://www.relishapp.com).
+
 ## Contributing
 
 1. Fork it
