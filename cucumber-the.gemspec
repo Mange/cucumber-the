@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["magnus.bergmark@gmail.com"]
   gem.description   = %q{Adds quick access to instances to help you write more fluid steps.}
   gem.summary       = %q{Adds quick access to instances to help you write more fluid steps.}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/Mange/cucumber-the"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
