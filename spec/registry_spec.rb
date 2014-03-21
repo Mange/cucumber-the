@@ -5,6 +5,7 @@ module Cucumber
   module The
     describe Registry do
       subject(:registry) { Registry.new }
+      after(:each) { registry.clear }
 
       it "can set and access values using hash notation" do
         registry[:foo] = "bar"
@@ -14,6 +15,24 @@ module Cucumber
       it "can set and access values using messages" do
         registry.foo = "bar"
         registry.foo.should == "bar"
+      end
+
+      it "does not differentiate between symbols and strings" do
+        registry[:foo] = "bar"
+        registry["foo"].should == "bar"
+
+        registry["bar"] = "baz"
+        registry[:bar].should == "baz"
+      end
+
+      it "can tell if a key is set" do
+        registry.should_not have_key(:foo)
+        registry.should_not have_key('foo')
+
+        registry.foo = "bar"
+
+        registry.should have_key('foo')
+        registry.should have_key(:foo)
       end
 
       it "raises an error when accessing unset values using hash notation" do

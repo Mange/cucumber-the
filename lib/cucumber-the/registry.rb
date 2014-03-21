@@ -2,11 +2,15 @@ module Cucumber
   module The
     class Registry
       def []=(name, value)
-        thread_registry[name] = value
+        thread_registry[name.to_s] = value
       end
 
       def [](name)
-        thread_registry[name] || raise_error(name)
+        thread_registry[name.to_s] || raise_error(name)
+      end
+
+      def has_key?(name)
+        thread_registry.has_key?(name.to_s)
       end
 
       def clear
@@ -16,9 +20,9 @@ module Cucumber
       def method_missing(name, *args)
         key_name = name.to_s
         if key_name.chomp! '='
-          self[key_name.to_sym] = args.first
+          self[key_name] = args.first
         else
-          self[name]
+          self[key_name]
         end
       end
 
