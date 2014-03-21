@@ -26,8 +26,8 @@ module Cucumber
         end
       end
 
-      def responds_to(name, *)
-        true
+      def respond_to?(name, *)
+        super || has_key?(name)
       end
 
       private

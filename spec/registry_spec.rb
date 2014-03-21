@@ -35,6 +35,18 @@ module Cucumber
         registry.should have_key(:foo)
       end
 
+      it "does not respond to names that are not set" do
+        registry.should_not respond_to :foo
+        registry.foo = "bar"
+        registry.should respond_to :foo
+      end
+
+      it "responds to normal methods" do
+        registry.should respond_to :has_key?
+        registry.should respond_to :[]
+        registry.should respond_to :clear
+      end
+
       it "raises an error when accessing unset values using hash notation" do
         expect {
           registry[:elephant]
