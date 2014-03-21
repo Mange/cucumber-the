@@ -92,9 +92,8 @@ You can [read the documentation](https://www.relishapp.com/mange/cucumber-the/) 
 
 This gem supports the following versions of Ruby:
 
-  * Ruby 1.8.7
-  * Ruby 1.9.3
-  * JRuby (1.8 mode)
-  * JRuby (1.9 mode)
-  * Rubinius (1.8 mode)
-  * Rubinius (1.9 mode)
+  * MRI 1.9.3
+  * MRI 2.0
+  * MRI 2.1
+  * JRuby latest
+  * Rubinius latest
